@@ -16,15 +16,21 @@ export default class InsertProduct extends Component {
         };
     }
     isChange = (event) => {
-        let name = event.target.name;
-        let value = event.target.value;
+        const name = event.target.name;
+        const value = event.target.value;
         this.setState({
             [name]: value
         })
     }
-    onClickAddProduct = (event) => {
+    isChangeFile = (event) => {
+        let image = event.target.files[0];
+        this.setState({
+            image_product: image.name
+        })
+    }
+    onClickAddProduct = async (event) => {
         event.preventDefault();
-        const dataForm = {
+        const data = {
             name_product: this.state.name_product,
             price_product: this.state.price_product,
             sale_product: this.state.sale_product,
@@ -32,38 +38,23 @@ export default class InsertProduct extends Component {
             image_product: this.state.image_product,
             description_product: this.state.description_product,
         }
+        const rs = await axios.post('http://localhost:3100/products', data )
+        console.log(rs);
         
-        axios.post('http://localhost:3100/products', {
-            name_product: this.state.name_product,
-            price_product: this.state.price_product,
-            sale_product: this.state.sale_product,
-            quantity_product: this.state.quantity_product,
-            image_product: this.state.image_product,
-            description_product: this.state.description_product,
-          })
-          .then(response => { 
-            console.log(response)
-         })
-         .catch(error => {
-           console.log(error.response)
-         });
-
-        // const result = await axios({
-        //     method: 'post',
-        //     url: 'http://localhost:3100/products',
-        //     data: {
-        //         name_product: this.state.name_product,
-        //         price_product: this.state.price_product,
-        //         sale_product: this.state.sale_product,
-        //         quantity_product: this.state.quantity_product,
-        //         image_product: this.state.image_product,
-        //         description_product: this.state.description_product,
-        //     }
-        // });
-        // if(result.data.status = true){
-        //     this.notify(result.data.message);
-        // }
-        // console.log(result);
+        // axios.post('http://localhost:3100/products', {
+        //     name_product: this.state.name_product,
+        //     price_product: this.state.price_product,
+        //     sale_product: this.state.sale_product,
+        //     quantity_product: this.state.quantity_product,
+        //     image_product: this.state.image_product,
+        //     description_product: this.state.description_product,
+        //   })
+        //   .then(response => { 
+        //     console.log(response)
+        //  })
+        //  .catch(error => {
+        //    console.log(error.response)
+        //  });
     }
     notify = (message) => {
         toast(message, {
@@ -98,7 +89,7 @@ export default class InsertProduct extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                        <input type="text" onChange={(event)=>this.isChange(event)} className="form-control" placeholder="Hình ảnh sản phẩm" name="image_product" />
+                        <input type="file" onChange={(event)=>this.isChangeFile(event)} className="form-control" placeholder="Hình ảnh sản phẩm" name="image_product" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Mô tả sản phẩm</label>

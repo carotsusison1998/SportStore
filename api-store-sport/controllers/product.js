@@ -26,7 +26,13 @@ const getDetailProducts = (req, res, next) => {
     })
 }
 const insertProducts = (req, res, next) => {
-    console.log(req.value.body);
+    console.log(req.body);
+    console.log(req.file);
+    return res.status(200).json({
+        status: true,
+        message: "Insert Product Successfully",
+    })
+   
     // ProductModel.insertData(req.body, (err, result) => {
     //     return res.status(200).json({
     //         status: true,
