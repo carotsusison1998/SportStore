@@ -1,13 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const cors = require('cors');
 // const mongoose = require('mongoose');
 const securityApp = require('helmet');
 const connect_db = require('./database/connect');
 
 const app = express();
 app.use(securityApp());
-
+app.use(cors());
 
 // const usersRoute = require('./routes/user');
 const productRouter = require('./routes/product');
@@ -53,7 +54,7 @@ app.use((err, req, res, next)=>{
     })
 })
 // start server
-const port = app.get('port') || 3000;
+const port = app.get('port') || 3100;
 app.listen(port, ()=>{
     console.log(`server is listening on port ${port}`);
 })

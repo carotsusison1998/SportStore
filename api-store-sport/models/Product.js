@@ -2,7 +2,7 @@ const db = require('../database/connect');
 
 const Product = {
 	getAll: async function(callback){
-        const sql = "SELECT * FROM tbls_products";
+        const sql = "SELECT * FROM tbl_products";
         return await db.query(sql, callback);
     },
     getDetail: async function(id, callback){

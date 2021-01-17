@@ -22,24 +22,48 @@ export default class InsertProduct extends Component {
             [name]: value
         })
     }
-    onClickAddProduct = async (event) => {
+    onClickAddProduct = (event) => {
         event.preventDefault();
-        const result = await axios({
-            method: 'post',
-            url: 'http://localhost:3100/products',
-            data: {
-                name_product: this.state.name_product,
-                price_product: this.state.price_product,
-                sale_product: this.state.sale_product,
-                quantity_product: this.state.quantity_product,
-                image_product: this.state.image_product,
-                description_product: this.state.description_product,
-            }
-        });
+        const dataForm = {
+            name_product: this.state.name_product,
+            price_product: this.state.price_product,
+            sale_product: this.state.sale_product,
+            quantity_product: this.state.quantity_product,
+            image_product: this.state.image_product,
+            description_product: this.state.description_product,
+        }
+        
+        axios.post('http://localhost:3100/products', {
+            name_product: this.state.name_product,
+            price_product: this.state.price_product,
+            sale_product: this.state.sale_product,
+            quantity_product: this.state.quantity_product,
+            image_product: this.state.image_product,
+            description_product: this.state.description_product,
+          })
+          .then(response => { 
+            console.log(response)
+         })
+         .catch(error => {
+           console.log(error.response)
+         });
+
+        // const result = await axios({
+        //     method: 'post',
+        //     url: 'http://localhost:3100/products',
+        //     data: {
+        //         name_product: this.state.name_product,
+        //         price_product: this.state.price_product,
+        //         sale_product: this.state.sale_product,
+        //         quantity_product: this.state.quantity_product,
+        //         image_product: this.state.image_product,
+        //         description_product: this.state.description_product,
+        //     }
+        // });
         // if(result.data.status = true){
         //     this.notify(result.data.message);
         // }
-        console.log(result.data);
+        // console.log(result);
     }
     notify = (message) => {
         toast(message, {
