@@ -9,15 +9,15 @@ const Product = {
         const sql = 'SELECT * FROM tbl_products WHERE id = "'+id+'" ';
         return await db.query(sql, callback);
     },
-    insertData: async function(body, callback){
+    insertData: async function(req, callback){
         const sql = "INSERT INTO tbl_products(name_product, price_product, sale_product, quantity_product, image_product, description_product) VALUES(?,?,?,?,?,?)";
         const data = [ 
-            body.name_product,
-            body.price_product,
-            body.sale_product,
-            body.quantity_product,
-            body.image_product,
-            body.description_product
+            req.body.name_product,
+            req.body.price_product,
+            req.body.sale_product,
+            req.body.quantity_product,
+            req.file.filename,
+            req.body.description_product
         ];
         return await db.query(sql, data, callback);
     }

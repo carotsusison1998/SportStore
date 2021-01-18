@@ -25,21 +25,50 @@ export default class InsertProduct extends Component {
     isChangeFile = (event) => {
         let image = event.target.files[0];
         this.setState({
-            image_product: image.name
+            image_product: image
         })
     }
     onClickAddProduct = async (event) => {
         event.preventDefault();
-        const data = {
-            name_product: this.state.name_product,
-            price_product: this.state.price_product,
-            sale_product: this.state.sale_product,
-            quantity_product: this.state.quantity_product,
-            image_product: this.state.image_product,
-            description_product: this.state.description_product,
+        const data = new FormData();
+        data.append("name_product", this.state.name_product);
+        data.append("price_product", this.state.price_product);
+        data.append("sale_product", this.state.sale_product);
+        data.append("quantity_product", this.state.quantity_product);
+        data.append("image_product", this.state.image_product);
+        data.append("description_product", this.state.description_product);
+        const progress = {
+            onUploadProgress: progressEvent => {
+                this.notify("upload thành công" + Math.round(progressEvent.loaded / progressEvent.total * 100) + "%");
+            }
         }
-        const rs = await axios.post('http://localhost:3100/products', data )
-        console.log(rs);
+        const result = await axios.post('http://localhost:3100/products', data, progress);
+        console.log("result", result);
+        if(result.data.status === true){
+            this.notify(result.data.message);
+        }else{
+            this.notify("Thêm dữ liệu thất bại");
+        }
+        // axios({
+        //     method: 'post',
+        //     url: 'http://localhost:3100/products',
+        //     data: data,
+        //     headers: {'Content-Type': 'multipart/form-data' },
+        //     progress,
+        // })
+        // .then(function (response) {
+        //     //handle success
+        //     console.log(response);
+        // })
+        // .catch(function (response) {
+        //     //handle error
+        //     console.log(response);
+        // });
+
+
+        // axios.post('http://localhost:3100/products', data, {
+        //     headers: {'Content-Type': 'multipart/form-data' }
+        // } ).then(res => console.log(res)).catch( error => console.log(error));
         
         // axios.post('http://localhost:3100/products', {
         //     name_product: this.state.name_product,

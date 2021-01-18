@@ -49,7 +49,6 @@ const schemas = {
         sale_product: joi.string().required(),
         quantity_product: joi.number().required(),
         description_product: joi.string().required(),
-        image_product: joi.string().required(),
     }),
 
     // signupSchema: joi.object().keys({
