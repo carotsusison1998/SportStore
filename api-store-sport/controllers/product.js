@@ -32,7 +32,6 @@ const insertProducts = (req, res, next) => {
     //     status: true,
     //     message: "Insert Product Successfully",
     // })
-   
     ProductModel.insertData(req, (err, result) => {
         return res.status(200).json({
             status: true,
