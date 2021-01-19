@@ -16,10 +16,14 @@ const Product = {
             req.body.price_product,
             req.body.sale_product,
             req.body.quantity_product,
-            req.file.filename,
+            req.files[0].filename,
             req.body.description_product
         ];
-        return await db.query(sql, data, callback);
+        const result = await db.query(sql, data, function(err, results, fields){
+            if (err) throw err.stack;
+            console.log('Them thanh cong ban ghi co id = ' + results);
+            console.log('Them thanh cong ban ghi co id = ' + fields);
+        });
     }
 };
 module.exports = Product;

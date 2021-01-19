@@ -10,7 +10,6 @@ const storage = multer.diskStorage({
         cb(null, './uploads/');
     },
     filename: function (req, file, cb) {
-        console.log("file", file);
         const filetypes = /jpeg|jpg|png|gif/;
         // Check ext
         const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -31,7 +30,7 @@ const upload = multer({ storage: storage });
 // ALL
 router.route('/')
     .get(productController.getAllProducts)
-    .post(upload.array('image_product', 10), productController.insertProducts)
+    .post(upload.array('image_product', 10),  productController.insertProducts)
 
 // PARAM
 router.route('/:ID')
