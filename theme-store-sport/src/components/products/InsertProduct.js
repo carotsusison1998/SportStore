@@ -11,7 +11,7 @@ export default class InsertProduct extends Component {
             price_product: '',
             sale_product: '',
             quantity_product: '',
-            image_product: '',
+            image_product: [],
             description_product: ''
         };
     }
@@ -22,11 +22,13 @@ export default class InsertProduct extends Component {
             [name]: value
         })
     }
-    isChangeFile = (event) => {
-        let image = event.target.files[0];
+    isChangeFile = async (event) => {
+        const files = [...this.state.image_product]; // Spread syntax creates a shallow copy
+        files.push(...event.target.files); // Spread again to push each selected file individually
         this.setState({
-            image_product: image
-        })
+            image_product: files
+        });
+        console.log(this.state.image_product);
     }
     onClickAddProduct = async (event) => {
         event.preventDefault();
@@ -35,12 +37,12 @@ export default class InsertProduct extends Component {
         data.append("price_product", this.state.price_product);
         data.append("sale_product", this.state.sale_product);
         data.append("quantity_product", this.state.quantity_product);
-        data.append("image_product", this.state.image_product);
         data.append("description_product", this.state.description_product);
+        this.state.image_product.forEach((file) => data.append('image_product', file));
         const progress = {
-            onUploadProgress: progressEvent => {
-                this.notify("upload thành công" + Math.round(progressEvent.loaded / progressEvent.total * 100) + "%");
-            }
+            // onUploadProgress: progressEvent => {
+            //     this.notify("upload thành công" + Math.round(progressEvent.loaded / progressEvent.total * 100) + "%");
+            // }
         }
         const result = await axios.post('http://localhost:3100/products', data, progress);
         console.log("result", result);
@@ -118,7 +120,7 @@ export default class InsertProduct extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                        <input type="file" onChange={(event)=>this.isChangeFile(event)} className="form-control" placeholder="Hình ảnh sản phẩm" name="image_product" />
+                        <input type="file" multiple onChange={(event)=>this.isChangeFile(event)} className="form-control" placeholder="Hình ảnh sản phẩm" name="image_product" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Mô tả sản phẩm</label>
