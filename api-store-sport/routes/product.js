@@ -22,7 +22,6 @@ const storage = multer.diskStorage({
         }else {
             return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
         }
-        
     }
 })
 const upload = multer({ storage: storage });
@@ -30,7 +29,7 @@ const upload = multer({ storage: storage });
 // ALL
 router.route('/')
     .get(productController.getAllProducts)
-    .post(upload.array('image_product', 10),  productController.insertProducts)
+    .post(upload.array('image_product', 10), (validateBody(schemas.productSchema)), productController.insertProducts)
 
 // PARAM
 router.route('/:ID')
