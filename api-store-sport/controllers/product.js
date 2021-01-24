@@ -1,4 +1,3 @@
-const ProductModel = require('../models/Product');
 const db = require('../database/connect');
 
 const getAllProducts = (req, res, next) => {
