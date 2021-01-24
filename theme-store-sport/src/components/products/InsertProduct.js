@@ -11,12 +11,14 @@ export default class InsertProduct extends Component {
     constructor(props){
         super(props);
         this.state = {
+            dataBrands: [],
             name_product: '',
             price_product: '',
             sale_product: '',
             quantity_product: '',
             image_product: [],
-            description_product: ''
+            description_product: '',
+            id_brand: ''
         };
         this.form = React.createRef();
     }
@@ -35,6 +37,9 @@ export default class InsertProduct extends Component {
             image_product: files
         });
     }
+    // isChangeBrand = (event) => {
+    //     console.log(event.target.value);
+    // }
     onClickAddProduct = async (event) => {
         event.preventDefault();
         const data = new FormData();
@@ -74,10 +79,34 @@ export default class InsertProduct extends Component {
             progress: undefined,
         });
     }
+    async componentDidMount() {
+        await axios.get('http://localhost:3100/brands').then(response => { 
+            this.setState({
+                dataBrands: response.data.result
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+    showDataBrands = () => {
+        if(this.state.dataBrands.length > 0){
+            return this.state.dataBrands.map((value, key) => {
+                return <option key={value.id} value={value.id} >{value.name_brand}</option>
+            })
+        }
+    }
     render() {
         return (
             <>
                 <form ref={this.form}>
+                    <div className="form-group name_product">
+                        <label htmlFor="exampleInputEmail1">Tên sản phẩm</label>
+                        <select onChange={(event) => this.isChange(event)} className="form-control" name="id_brand">
+                            <option>Vui lòng chọn</option>
+                            {this.showDataBrands()}
+                        </select>
+                    </div>
                     <div className="form-group name_product">
                         <label htmlFor="exampleInputEmail1">Tên sản phẩm</label>
                         <input type="text" onChange={(event)=>this.isChange(event)} className="form-control" placeholder="Tên sản phẩm" name="name_product" />

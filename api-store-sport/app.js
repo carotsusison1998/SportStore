@@ -10,9 +10,8 @@ const app = express();
 app.use(securityApp());
 app.use(cors());
 
-// const usersRoute = require('./routes/user');
+const brandRouter = require('./routes/brand');
 const productRouter = require('./routes/product');
-// const deckRoute = require('./routes/deck');
 
 
 // Middlewares
@@ -24,9 +23,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 // routes
-// app.use('/users', usersRoute);
+app.use('/brands', brandRouter);
 app.use('/products', productRouter)
-// app.use('/deck', deckRoute)
 
 
 // routes
