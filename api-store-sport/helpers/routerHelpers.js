@@ -5,7 +5,7 @@ const validateParam = (schema, name) => {
     return (req, res, next) => {
         // console.log('params...', req.params[name])
         const validatorResult = schema.validate({ param: req.params[name] })
-        // console.log('asdasda',validatorResult)
+        console.log('asdasda',validatorResult)
         if(validatorResult.error){
             return res.status(400).json(validatorResult.error)
         }
@@ -26,6 +26,8 @@ const validateParam = (schema, name) => {
 const validateBody = (schema) => {
     return (req, res, next) => {
         const validatorResult = schema.validate(req.body);
+        console.log('asdasda',validatorResult)
+
         if(validatorResult.error){
             return res.status(400).json(validatorResult.error);
         }

@@ -55,9 +55,10 @@ export default class InsertProduct extends Component {
             }else{
                 this.notify("Thêm dữ liệu thất bại");
             }
-        }).catch(error => {
-            if($("."+error.response.data.error.details[0].context.key).find()){
-                $("."+error.response.data.error.details[0].context.key).append("<p class='msg-error'>"+error.response.data.error.details[0].message+"</p>");
+        })
+        .catch(error => {
+            if($("."+error.response.data.details[0].context.key).find()){
+                $("."+error.response.data.details[0].context.key).append("<p class='msg-error'>"+error.response.data.details[0].message+"</p>");
             }
         });
         this.form.current.reset();
@@ -103,7 +104,7 @@ export default class InsertProduct extends Component {
                             editor={ ClassicEditor }
                             onReady={ editor => {
                                 // You can store the "editor" and use when it is needed.
-                                console.log( 'Editor is ready to use!', editor );
+                                // console.log( 'Editor is ready to use!', editor );
                             } }
                             onChange={ ( event, editor ) => {
                                 const data = editor.getData();
