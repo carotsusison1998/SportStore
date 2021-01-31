@@ -15,7 +15,6 @@ const validateParam = (schema, name) => {
             // console.log('3', req.value)
             req.value.params[name] = req.params[name]
             // console.log('4', req.value)
-
             next()
         }
     }
@@ -25,7 +24,11 @@ const validateBody = (schema) => {
     return (req, res, next) => {
         const validatorResult = schema.validate(req.body);
         if(validatorResult.error){
-            return res.status(400).json(validatorResult.error);
+            // return res.status(200).json(validatorResult.error);
+            return res.status(400).json({
+                message: "ERROR VALIDATES",
+                result: validatorResult.error
+            })
         }
         else{
             if(!req.value) req.value = {};

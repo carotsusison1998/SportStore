@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 21, 2021 at 11:40 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th1 31, 2021 lúc 07:21 AM
+-- Phiên bản máy phục vụ: 10.4.14-MariaDB
+-- Phiên bản PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,39 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `api_store_sport`
+-- Cơ sở dữ liệu: `api_store_sport`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_images`
+-- Cấu trúc bảng cho bảng `tbl_brands`
+--
+
+CREATE TABLE `tbl_brands` (
+  `id` int(11) NOT NULL,
+  `name_brand` text NOT NULL,
+  `description_brand` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_brands`
+--
+
+INSERT INTO `tbl_brands` (`id`, `name_brand`, `description_brand`, `created_at`) VALUES
+(1, 'Adidas', 'Nhiều năm qua, Adidas là nhà tài trợ chính cho nhiều chương trình thể thao. Nổi bật trong số đó phải kể tới giải World Cup 2010. Đây là giải đấu lớn với hơn 26 tỷ người trên khắp thế giới theo dõi.\r\nTrong bài viết này, hãy cùng tìm hiểu về 10 thương hiệu thời trang thể thao nổi tiếng nhất\r\nAdidas là cái tên lớn thứ hai trong lĩnh vực này\r\n\r\nAdidas là tên gọi được lấy cảm hứng từ Adolph Adi Dassler. Đó chính là ông tổ của ngành sản xuất các sản phẩm thể thao trên thế giới. Vào năm 1948, Adolph đã sáng lập Adidas với mục đích sản xuất và cung cấp quần áo, giày thời trang, dụng cụ thể thao. Hiện tại, đây là thương hiệu thời trang lớn thứ 2 thế giới – sau Nike.', '2021-01-24 03:36:01'),
+(2, 'Nike', 'Thương hiệu này được thành lập vào năm 1964. Khi đó, Bill Bowerman và Phil Knight đã bắt tay nhau để tạo nên một thương hiệu mới. Tên gọi ở thời điểm đó của nó là Blue Ribbon Sports. Đến năm 1971, thương hiệu này được đổi tên thành Nike dựa trên cảm hứng từ tên gọi của nữ thần chiến thắng của người Hy Lạp cổ.\r\nNhững mẫu giày thời trang của Nike khiến giới trẻ mê mẩn\r\nNhững mẫu giày thời trang của Nike khiến giới trẻ mê mẩn\r\n\r\nHiện tại, Nike đang là thương hiệu thời trang thể thao đặc biệt là giày đá bóng đắt giá nhất toàn cầu. Giá trị thương hiệu này hiện tại là 15 tỷ đô. Các mẫu giày Nike đặc biệt được ưa chuộng trên thế giới nhờ phong cách trẻ trung, khỏe khoắn.', '2021-01-24 03:36:01'),
+(3, 'Puma', '6 Trong bài viết này, hãy cùng tìm hiểu về 10 thương hiệu thời trang thể thao nổi tiếng nhất\r\nPuma gây ấn tượng với những sản phẩm trẻ trung\r\n\r\nPuma vốn là một công ty đa quốc gia của Đức. Puma chuyên thiết kế, sản xuất giày, quần áo thể thao cùng những loại phụ kiện thể thao khác nhau. Có trụ sở tại Herzogenau, nó đang là một trong những thương hiệu thời trang thể thao hàng đầu thế giới', '2021-01-24 03:36:01'),
+(4, 'DKS', 'DKS  hay Dicks Sports Goods, Inc. là một công ty bán lẻ đồ thể thao lừng danh của Mỹ. Đặt trụ sở tại Pennsylvania, nó nhanh chóng trở thành một thương hiệu nổi tiếng.\r\n7 Dks\r\nDKS sở hữu những mẫu giày tuyệt đẹp\r\n\r\nHiện tại, các mẫu giày thể thao của DKS rất được ưa chuộng. Dù thiết kế đơn giản, nó mang tới sự khỏe khoắn và mạnh mẽ cho người sử dụng.', '2021-01-24 03:36:01'),
+(5, 'Wika', 'Wika  không phải một thương hiệu lớn. Tuy nhiên, nó đang được rất nhiều người lựa chọn cho việc tập luyện thể thao của mình.\r\n\r\nGiày Wika có ưu điểm là giá thành phải chăng cùng thiết kế trẻ trung, đa dạng. Cảm giác của nó mang lại khi thi đấu cũng rất tốt.\r\n10 ưika\r\nGiày Wika mang lại cảm giác chân rất tốt\r\n\r\nTrên đây,  HT Sport đã giới thiệu với bạn 10 thương hiệu thời trang thể thao nổi tiếng nhất. Hiện tại, những sản phẩm nổi tiếng nhất của các thương hiệu này đã có mặt tại HT. Nếu bạn đang muốn tìm một sản phẩm phù hợp, liên hệ ngay với chúng tôi để được tư vấn nhé.', '2021-01-24 03:36:01'),
+(6, 'Asics', 'Thương hiệu đa quốc gia này đến từ nước Nhật. Hiện tại, nó đang trực tiếp cạnh tranh với những cái tên đình đám trong lĩnh vực thời trang thể thao tại Việt Nam.\r\n9 Asics\r\nAsics là cái tên lừng danh đến từ nước Nhật\r\n\r\nSản phẩm của Asics rất đa dạng, dành cho nhiều lứa tuổi và nhiều bộ môn khác nhau. Năm 2018, Asics đã trở thành nhà cung cấp đồ thể thao chính thức cho IPC. Điều đó là đủ để khẳng định chất lượng của sản phẩm đến từ thương hiệu này.', '2021-01-24 03:36:01'),
+(7, 'Kappa', 'Kappa nổi tiếng với logo hình ảnh hai người đang dựa lưng vào nhau. Thương hiệu này mang tới cho thị trường những bộ trang phục thể thao được thiết kế theo xu hướng mới.\r\n\r\nĐặc biệt, các sản phẩm của Kappa rất đa dạng. Nó dễ dàng phù hợp với mọi lứa tuổi bởi những điểm đặc trưng của mình. Đặc biệt, Kappa tự hào là một trong những nhà tài trợ lớn nhất cho những giải đấu thể thao.\r\n4 Kappa\r\nKappa nổi tiếng với logo độc đáo', '2021-01-24 03:36:01');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_images`
 --
 
 CREATE TABLE `tbl_images` (
@@ -36,30 +62,26 @@ CREATE TABLE `tbl_images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_images`
+-- Đang đổ dữ liệu cho bảng `tbl_images`
 --
 
 INSERT INTO `tbl_images` (`id`, `id_product`, `image`, `url`, `created_at`) VALUES
-(23, 18, 'image_product-1611217645568.jpeg', 'uploads\\image_product-1611217645568.jpeg', '2021-01-21 08:27:25'),
-(24, 18, 'image_product-1611217645602.jpeg', 'uploads\\image_product-1611217645602.jpeg', '2021-01-21 08:27:25'),
-(25, 19, 'image_product-1611220314753.jpeg', 'uploads\\image_product-1611220314753.jpeg', '2021-01-21 09:11:54'),
-(26, 19, 'image_product-1611220314759.jpeg', 'uploads\\image_product-1611220314759.jpeg', '2021-01-21 09:11:54'),
-(27, 20, 'image_product-1611220431231.jpeg', 'uploads\\image_product-1611220431231.jpeg', '2021-01-21 09:13:51'),
-(28, 20, 'image_product-1611220431234.jpeg', 'uploads\\image_product-1611220431234.jpeg', '2021-01-21 09:13:51'),
-(29, 21, 'image_product-1611220519020.jpeg', 'uploads\\image_product-1611220519020.jpeg', '2021-01-21 09:15:19'),
-(30, 21, 'image_product-1611220519021.jpeg', 'uploads\\image_product-1611220519021.jpeg', '2021-01-21 09:15:19'),
-(31, 22, 'image_product-1611225042331.jpeg', 'uploads\\image_product-1611225042331.jpeg', '2021-01-21 10:30:42'),
-(32, 22, 'image_product-1611225042332.jpeg', 'uploads\\image_product-1611225042332.jpeg', '2021-01-21 10:30:42'),
-(33, 22, 'image_product-1611225042332.jpeg', 'uploads\\image_product-1611225042332.jpeg', '2021-01-21 10:30:42');
+(50, 63, 'image_product-1612072743092.jpeg', 'uploads\\image_product-1612072743092.jpeg', '2021-01-31 05:59:03'),
+(51, 63, 'image_product-1612072743094.jpeg', 'uploads\\image_product-1612072743094.jpeg', '2021-01-31 05:59:03'),
+(52, 63, 'image_product-1612072743095.jpeg', 'uploads\\image_product-1612072743095.jpeg', '2021-01-31 05:59:03'),
+(53, 64, 'image_product-1612073118762.png', 'uploads\\image_product-1612073118762.png', '2021-01-31 06:05:19'),
+(54, 64, 'image_product-1612073118765.jpeg', 'uploads\\image_product-1612073118765.jpeg', '2021-01-31 06:05:19'),
+(55, 64, 'image_product-1612073118766.jpeg', 'uploads\\image_product-1612073118766.jpeg', '2021-01-31 06:05:19');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_products`
+-- Cấu trúc bảng cho bảng `tbl_products`
 --
 
 CREATE TABLE `tbl_products` (
   `id` int(11) NOT NULL,
+  `id_brand` int(11) NOT NULL,
   `name_product` text NOT NULL,
   `price_product` text NOT NULL,
   `sale_product` text NOT NULL,
@@ -69,58 +91,74 @@ CREATE TABLE `tbl_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_products`
+-- Đang đổ dữ liệu cho bảng `tbl_products`
 --
 
-INSERT INTO `tbl_products` (`id`, `name_product`, `price_product`, `sale_product`, `quantity_product`, `image_product`, `description_product`) VALUES
-(18, 'Áo Arsenal 2021 BỀN - ĐẸP - RẺ nhất', '95000', '0', 50, 'image_product-1611217645568.jpeg', 'Các mẫu áo Arsenal 2021 tại Aobongda.net sẽ phát huy tối đa hiệu quả tập luyện của bạn trong mỗi buổi tập thể dục hay bóng đá.\nChất vải mềm mại, thoáng khí, hút ẩm cho phép không khí lưu thông tự do để bạn luôn mát mẻ, khô ráo và thoải mái cho đến khi tiếng còi mãn cuộc vang lên!\nPhong cách Art Deco thanh lịch, đậm nét của khán đài phía Đông mang tính biểu tượng của Highbury truyền cảm hứng cho chiếc áo đấu Arsenal 2021 với thiết kế hoài cổ của những chiếc áo sơ mi những năm 60 & 70 được kết hợp với phần thân màu đỏ đậm và cổ thuyền có gân màu trắng. \nThiết kế vừa vặn, ôm sát vào da sẽ giúp bạn được nâng đỡ mà không cảm thấy khó chịu, đồng thời có cổ tay áo cao và viền cong với độ dài giảm nhẹ ở phía sau để cải thiện sự tự do di chuyển. Huy hiệu câu lạc bộ Arsenal và logo, biểu tưởng của các nhà tài trợ truyền nhiệt giúp chiếc áo siêu nhẹ và có khả năng chống gió, do đó sẽ không làm bạn chậm lại khi cần bắt đầu trò chơi. Với các sợi kỹ thuật thoáng khí, chiếc áo này sẽ hoạt động với cơ thể của bạn để nâng cao hiệu suất của bạn khi bạn cần nhất.\nGiới thiệu về Clb bóng đá Arsenal\nTên đầy đủ: Arsenal Football Club\nBiệt danh: Pháo Thủ - The Gunners\nThành lập: T12/1886\nSân vận động: Emirates (sức chứa: 60.000 CĐV)\nĐịa chỉ: Holloway, London, Anh\nCác danh thủ nổi tiếng của Arsenal phải kể đến như: Patrick Vieira, David O\'Leary, Tony Adams, David Seaman, Dennis Bergkamp, Thierry Henry \nĐược người hâm mộ biết đến là một trong \"tứ đại gia\" của giải Ngoại Hạng Anh, Arsenal luôn đứng trong top 4 các đội dẫn đầu mùa giải qua các năm. Arsenal còn được biết đến với biệt danh Pháo Thủ thành London (The Gunners), trụ sở hiện tại của Pháo Thủ nằm tại Holloway, London, Anh Quốc.\n\nSở hữu 46 danh hiệu chính thức, Arsenal là một trong những câu lạc bộ bóng đá danh tiếng nhất tại nước Anh. Số lượng fan hâm mộ các pháo thủ Arsenal đông đảo đứng thứ 5 thế giới. Arsenal là câu lạc bộ bóng đá có doanh thu cao thứ sáu thế giới với 487,6 triệu Bảng trong mùa giải 2016–17. Năm 2018, Arsenal được định giá 2,102 tỷ EUR.\nThành tích nổi bật của Clb bóng đá Arsenal\nQuốc nội:\nGiải vô địch quốc gia: 13 danh hiệu\nFA Cup: 13 danh hiệu -  là đội bóng giành được nhiều chiếc Cúp FA nhất trong lịch sử\nCúp liên đoàn: 2 danh hiệu\nSiêu cup bóng đá Anh: 15 danh hiệu\nChâu Âu\nUEFA Cup Winner’s Cup / C2 Cup: 1 danh hiệu\nInter- Cities Fairs Cup / C3 Cup: 1 danh hiệu\nCú đúp: Arsenal đã giành được bốn cú đúp, bao gồm:\nCú đúp vô địch quốc gia và Cúp FA: 1970–71, 1997–98, 2001–02\nCú đúp vô địch Cúp FA và Cúp Liên đoàn Anh: 1992–93'),
-(19, 'Áo Chelsea sân nhà 2020 – 2021 hàng Thái Lan', '320000', '260000', 50, 'image_product-1611220314753.jpeg', 'Mẫu quần áo bóng đá Chelsea sân nhà, đây là mẫu quần áo bóng đá sân mùa giải mới của câu lạc bộ:\nHàng VN – Giá lẻ: 90.000 VNĐ /1 bộ.\n– Từ 10 bộ trở lên: 85.000VNĐ /1 bộ.\nHàng Thái Lan F1:\n– Adidas: 195.000VNĐ /1 áo – 260.000VNĐ /1 bộ\n– Nike/Puma: 260.000VNĐ/ 1 áo – 330.000VNĐ/ 1 bộ\nGiá ưu đãi từ 10 bộ trở lên.\n\nShop đồ thể thao Sporter.vn cam kết:\n– SẢN PHẨM QUẦN ÁO BÓNG ĐÁ ĐÚNG CHẤT LƯỢNG\n– GIÁ LUÔN LUÔN THẤP NHẤT SO VỚI SẢN PHẨM CÙNG LOẠI\n– ĐƯỢC PHÉP ĐỔI TRẢ HÀNG\n– LUÔN TƯ VẤN NHIỆT TÌNH VÀ VUI VẺ.'),
-(20, 'Áo Manchester United 2021 Đẹp | Áo đấu MU 2021 RẺ nhất!', '140000', '130000', 30, 'image_product-1611220431231.jpeg', 'Mẫu áo thứ ba có họa tiết kiểu Dazzle Camo gồm những đường sọc màu đen trắng xen kẽ. Theo lý giải, Dazzle Camo là kiểu họa tiết được sử dụng trong hải quân từ thế chiến thứ nhất giúp các con tàu ngụy trang tốt hơn.\n\nGiới thiệu về Clb bóng đá Manchester United\nTên đầy đủ: Manchester United Football Club\nBiệt danh: The Red Devils (Quỷ đỏ)\nÁo đấu MU: Trắng, Đỏ, Đen.\nThành lập: 1878 với tên ban đầu là Newton Heath LYR F.C. , đến năm 1902 đổi tên thành Manchester United F.C.\nSân vận động: Old Trafford ( chứa 74.879 CĐV)\nManchester United là tên một câu lạc bộ bóng đá Anh, trụ sở tại Old Trafford, thành phố Greater Manchester. Đây là đội bóng được thành lập từ năm 1878 và hiện đang đang chơi tại giải Premier League. Thường được gọi tắt là Man United hoặc MU.\n\nMU được xem là câu lạc bộ thành công nhất tại nước Anh với 20 lần vô địch bóng đá Anh nhiều hơn bất kỳ câu lạc bộ nào tại nước Anh.\nManchester United cũng là câu lạc bộ bóng đá có lượng người hâm mộ cao nhất thế giới với tỉ lệ đến sân luôn cao nhất Châu Âu, ước tính hiện tại có khoảng 1 tỉ fan hâm mộ trên toàn cầu.\nThành tích nổi bật của Clb bóng đá Manchester United\nQuốc gia 58 danh hiệu:\nGiải vô địch quốc gia: 20 ( kỷ lục)\nCúp FA: 12\nCúp Liên đoàn Anh: 5\nSiêu cúp Anh: 21 ( kỷ lục)\nGiải hạng nhất Anh: 2\nQuốc tế 8 danh hiệu:\nUEF Champions League/Cúp C1: 3\nUEF Cup Winners\' Cup/Cúp C2: 2\nUEF Cup/Cúp C3: 1\nFIFA Club World Cup: 1\nUEF Super Cup/Siêu cúp Châu Âu: 1\nIntercontinental Cup: 1'),
-(21, 'Áo Manchester City sân nhà 2020 – 2021 hàng Thái Lan', '320000', '265000', 45, 'image_product-1611220519020.jpeg', 'Mẫu quần áo bóng đá Manchester City sân nhà, đây là mẫu quần áo bóng đá sân mùa giải mới của câu lạc bộ:\nHàng VN – Giá lẻ: 90.000 VNĐ /1 bộ.\n– Từ 10 bộ trở lên: 85.000VNĐ /1 bộ.\nHàng Thái Lan F1:\n– Adidas: 195.000VNĐ /1 áo – 260.000VNĐ /1 bộ\n– Nike/Puma: 260.000VNĐ/ 1 áo – 330.000VNĐ/ 1 bộ\nGiá ưu đãi từ 10 bộ trở lên.\n\nShop đồ thể thao Sporter.vn cam kết:\n– SẢN PHẨM QUẦN ÁO BÓNG ĐÁ ĐÚNG CHẤT LƯỢNG\n– GIÁ LUÔN LUÔN THẤP NHẤT SO VỚI SẢN PHẨM CÙNG LOẠI\n– ĐƯỢC PHÉP ĐỔI TRẢ HÀNG\n– LUÔN TƯ VẤN NHIỆT TÌNH VÀ VUI VẺ.'),
-(22, 'Áo Liverpool sân khách 2020 – 2021 hàng Thái Lan', '250000', '225000', 30, 'image_product-1611225042331.jpeg', '<p>Ngày 13 tháng 8 vừa qua, NIke đã giới thiệu với Phố Cảng Merseyside mẫu áo Liverpool sân khách 2020 – 2021. Mùa giới mới này, hãng thời trang thể thao Nike sẽ thay thế New Balance là nhà tài trợ chính, cùng với ngân hàng Standard Chartered.</p><figure class=\"image\"><img src=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-0-2.jpg\" alt=\"Áo liverpool sân khách\" srcset=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-0-2.jpg 1000w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-0-2-698x400.jpg 698w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-0-2-768x440.jpg 768w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-0-2-600x344.jpg 600w\" sizes=\"100vw\" width=\"1000\"></figure><h2><strong>Chi tiết áo Liverpool sân khách 2020 – 2021 hàng Thái Lan:</strong></h2><p>Mẫu áo đấu mới đem lại cái nhìn mới lạ, đẹp mắt và thu hút hơn khi NIke sử dụng hai gam màu đen và xanh ngọc, một trong những màu xu hướng của năm 2020. Các biểu tượng logo được sử dụng màu đen, làm điểm nhấn nổi bật trên nền áo.đẹp mắt. Các họa tiết trên áo đấu được lấy ý tưởng từ Shankly Gates, cổng chính của lối vào sân vận động Anfield.</p><figure class=\"image\"><img src=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-400x400.jpg\" alt=\"Áo liverpool sân khách\" srcset=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-400x400.jpg 400w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-280x280.jpg 280w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-768x768.jpg 768w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-800x800.jpg 800w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-300x300.jpg 300w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-600x600.jpg 600w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1-100x100.jpg 100w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-1.jpg 900w\" sizes=\"100vw\" width=\"400\"></figure><figure class=\"image\"><img src=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3-400x400.jpg\" alt=\"Áo liverpool sân khách\" srcset=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3-400x400.jpg 400w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3-280x280.jpg 280w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3-768x768.jpg 768w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3.jpg 800w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3-300x300.jpg 300w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3-600x600.jpg 600w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-1-3-100x100.jpg 100w\" sizes=\"100vw\" width=\"400\"></figure><p>Thiết kế Nike Vaporknit được sử dụng chun cho các mẫu áo đấu của Nike năm nay, với phần cổ được xếp lớp phía sau và hai đường kẻ sọc bên hông.</p><figure class=\"image\"><img src=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-14.jpg\" alt=\"Áo liverpool sân khách\" srcset=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-14.jpg 400w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-14-280x280.jpg 280w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-14-300x300.jpg 300w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-14-100x100.jpg 100w\" sizes=\"100vw\" width=\"400\"></figure><figure class=\"image\"><img src=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-13.jpg\" alt=\"Áo liverpool sân khách\" srcset=\"https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-13.jpg 400w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-13-280x280.jpg 280w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-13-300x300.jpg 300w, https://www.sporter.vn/wp-content/uploads/2017/06/Ao-liverpool-san-khach-13-100x100.jpg 100w\" sizes=\"100vw\" width=\"400\"></figure><h2><strong>Hình ảnh áo bóng đá Liverpool sân khách 2020 – 2021</strong></h2>');
+INSERT INTO `tbl_products` (`id`, `id_brand`, `name_product`, `price_product`, `sale_product`, `quantity_product`, `image_product`, `description_product`) VALUES
+(63, 1, 'Áo chelsea', '150000', '125000', 25, 'image_product-1612072743092.jpeg', '<h2>Giới thiệu danh mục áo bóng đá Chelsea 2021</h2><p><i>Trong suốt hai thập kỷ vừa qua Chelsea đã có cho mình quãng thời gian thành công nhất. Là đội bóng thành Luân Đôn đầu tiên và duy nhất dành danh hiệu UEFA Champion League, 6 chức vô địch quốc gia. Hình ảnh chiếc xe buýt hai tầng màu xanh đã trở nên quen thuộc với người hâm mộ ngày nay. Màu xanh đã xuất hiện từ những ngày đầu tiên của câu lạc bộ và sau này sự thay đổi chỉ là trở nên đậm hơn. Mùa giải 1964-1965 Chelsea lần đầu tiên sử dụng trang phục quần xanh thay cho quần trắng trước đây.</i></p><p>Trong danh mục “Áo Chelsea” tổng hợp các mẫu áo mới nhất của câu lạc bộ với đầy đủ kích thước và chất liệu. Ngoài mẫu&nbsp;<strong>áo chính thức</strong>&nbsp;của các câu lạc bộ, các&nbsp;<strong>mẫu áo dành cho fan</strong>…cũng được cập nhật trong danh mục</p><h2>CÁC LOẠI CHẤT LIỆU ĐỒ THỂ THAO ÁO BÓNG ĐÁ CHELSEA 2021</h2><p>Những mẫu áo bóng đá hiện nay tại Hồng Phúc bao gồm các loại chất liệu chính như: Thun lạnh, vải dệt và hàng Thailand</p><h4>Vải thun lạnh</h4><p>Nhiều ưu điểm phù hợp với nhu cầu sử dụng của người dùng cho nên đây là loại vải được sử dụng phổ biến nhất trong thể thao</p><ul><li>Chất thun lạnh m<strong>ềm mịn, trơn láng, không nhăn</strong>, cho cảm giác <strong>mát lạnh</strong></li><li>Khả năng<strong> thoát ẩm và thấm hút mồ hôi</strong> cao tạo sự thoải mái, dễ chịu trong suốt quá trình sử dụng</li><li>Vải rất <strong>dễ giặt sạch và nhanh khô</strong>, có thể phơi cả dưới ánh nắng lớn</li><li>Cấu tạo bởi các loại sợi tổng hợp cho vải độ bền và khả năng co dãn tốt, <strong>không bị xù lông</strong> khi chà mạnh</li><li>Form áo chuẩn mang lại cái nhìn mạnh mẽ cho người mặc</li><li>Vì là loại vải được dùng phổ biến nên <strong>mẫu mã đa dạng</strong></li></ul><h4>Vải dệt kim</h4><p>Cũng được sử dụng nhiều trong thể thao, vải dệt kim có chất lượng và giá thành nhỉnh hơn so với vải thun lạnh. Khả năng kháng bụi bẩn, nấm mốc và tính thẩm mỹ cao là những ưu điểm nổi bật của loại vải này</p><ul><li>Vải dệt có<strong> bề mặt mềm xốp</strong>, vô cùng<strong> thoáng mát</strong></li><li>Khả năng<strong> thấm hút mồ</strong> hôi cao, tính vệ sinh trong may mặc cao</li><li>Tính <strong>co dãn và đàn hồi</strong> rất tốt</li><li>Áo ít nhăn, <strong>dễ bảo quản</strong> và giặt sạch</li><li>Được đánh giá là chất lượng vải tốt trong thể thao, tuy nhiên vải dệt không được đánh giá cao bằng vải Thailand có chất lượng tốt hơn rất nhiều</li></ul><h4>Vải Thailand</h4><p>Vải Thailand thuộc dòng vải cao cấp, xưa nay vốn nổi tiếng về độ thoáng mát. Tích hợp tất cả những ưu điểm của hai loại vải trên, vải Thailand đem lại cảm giác hoàn toàn mới khi sử dụng</p><ul><li>Một chiếc áo bóng đá bằng vải Thailand vô cùng <strong>nhẹ và dễ chịu</strong></li><li>Khả năng <strong>chống nhăn, kháng bụi và ẩm mốc</strong> tốt hơn cả các loại vải khác</li><li>Tính thẩm mỹ của loại vải này khiến nó được ưu ái trong sản xuất áo thể thao. Các sợi vải của áo <strong>giữ màu rất tốt</strong> cho màu sắc của áo luôn tươi mới</li><li>Khả năng <strong>hút ẩm và bay hơi</strong> của áo rất tốt, chiếc áo luôn khô ráo bất chấp thời tiết nắng nóng hay mưa ẩm</li><li>Khả năng <strong>cách nhiệt và thoáng khí</strong></li><li>Bề mặt áo mềm và xốp, thường có các lỗ nhỏ li ti giúp thoáng khí</li></ul>'),
+(64, 2, 'Áo đầu câu lạc bộ barca', '135000', '0', 50, 'image_product-1612073118762.png', '<h2>Giới thiệu danh mục áo bóng đá Barcelona 2020 2021</h2><p><i>Những năm trước đây Barca là đội bóng lớn duy nhất tại châu Âu không nhận đề nghị tài trợ áo đấu nào. Sau đó họ hợp tác với Unicef từ năm 2006 và Unicef được in trên áo đấu của Barca. Mùa giải 2011-2012 áo đấu Barca có dòng chữ nhà tài trợ Qatar Airways.</i></p><p><i>Và cho đến nay, từ việc không nhận nhà tài trợ, Rakuten đã biến Barcelona trở thành đội bóng nhận tiền tài trợ áo đấu lớn thứ 2 thế giới sau Man Unt. Như vậy, tên và logo của Rakuten sẽ xuất hiện trên áo đấu của Barcelona từ mùa giải năm sau cho đến hết mùa giải 2020/21</i></p><p>Trong danh mục “Áo Barcelona” tổng hợp các mẫu áo mới nhất của câu lạc bộ với đầy đủ kích thước và chất liệu. Ngoài mẫu <strong>áo chính thức</strong>&nbsp;của các câu lạc bộ, các&nbsp;<strong>mẫu áo dành cho fan</strong>…cũng được cập nhật trong danh mục</p><h2>CÁC LOẠI CHẤT LIỆU ÁO BÓNG ĐÁ BARCA – ĐỒ THỂ THAO</h2><p>Những mẫu áo bóng đá hiện nay tại Hồng Phúc bao gồm các loại chất liệu chính như: Thun lạnh, vải dệt và hàng Thailand</p><h4>Vải thun lạnh</h4><p>Nhiều ưu điểm phù hợp với nhu cầu sử dụng của người dùng cho nên đây là loại vải được sử dụng phổ biến nhất trong thể thao</p><ul><li>Chất thun&nbsp;<strong>lạnh mềm mịn, trơn láng, không nhăn</strong>, cho cảm giác&nbsp;<strong>mát lạnh</strong></li><li>Khả năng&nbsp;<strong>thoát ẩm và thấm hút mồ hôi</strong>&nbsp;cao tạo sự thoải mái, dễ chịu trong suốt quá trình sử dụng</li><li>Vải rất dễ&nbsp;<strong>giặt sạch và nhanh khô</strong>, có thể phơi cả dưới ánh nắng lớn</li><li>Cấu tạo bởi các loại sợi tổng hợp cho vải độ bền và khả năng co dãn tốt,&nbsp;<strong>không bị xù lông&nbsp;</strong>khi chà mạnh</li><li>Form áo chuẩn mang lại cái nhìn mạnh mẽ cho người mặc</li><li>Vì là loại vải được dùng phổ biến nên&nbsp;<strong>mẫu mã đa dạng</strong></li></ul><h4>Vải dệt kim</h4><p>Cũng được sử dụng nhiều trong thể thao, vải dệt kim có chất lượng và giá thành nhỉnh hơn so với vải thun lạnh. Khả năng kháng bụi bẩn, nấm mốc và tính thẩm mỹ cao là những ưu điểm nổi bật của loại vải này</p><ul><li>Vải dệt có&nbsp;<strong>bề mặt mềm xốp</strong>, vô cùng&nbsp;<strong>thoáng mát</strong></li><li>Khả năng&nbsp;<strong>thấm hút mồ hôi</strong>&nbsp;cao, tính vệ sinh trong may mặc cao</li><li>Tính&nbsp;<strong>co dãn và đàn hồi</strong>&nbsp;rất tốt</li><li>Áo ít nhăn, dễ bảo quản và giặt sạch</li><li>Được đánh giá là chất lượng vải tốt trong thể thao, tuy nhiên vải dệt không được đánh giá cao bằng vải Thailand có chất lượng tốt hơn rất nhiều</li></ul><h4>Vải Thailand</h4><p>Vải Thailand thuộc dòng vải cao cấp, xưa nay vốn nổi tiếng về độ thoáng mát. Tích hợp tất cả những ưu điểm của hai loại vải trên, vải Thailand đem lại cảm giác hoàn toàn mới khi sử dụng</p><ul><li>Một chiếc áo bóng đá bằng vải Thailand vô cùng&nbsp;<strong>nhẹ và cảm giác dễ chịu</strong></li><li>Khả năng&nbsp;<strong>chống nhăn, kháng bụi và ẩm mốc</strong>&nbsp;tốt hơn cả các loại vải khác</li><li>Tính thẩm mỹ của loại vải này khiến nó được ưu ái trong sản xuất áo thể thao. Các sợi vải của&nbsp;<strong>áo giữ màu rất tốt</strong>&nbsp;cho màu sắc của áo luôn tươi mới</li><li>Khả năng&nbsp;<strong>hút ẩm và bay hơi</strong>&nbsp;của áo rất tốt, chiếc áo luôn khô ráo bất chấp thời tiết nắng nóng hay mưa ẩm</li><li>Khả năng&nbsp;<strong>cách nhiệt và thoáng khí</strong></li><li><strong>Bề mặt áo mềm và xốp</strong>, thường có các lỗ nhỏ li ti giúp thoáng khí</li></ul>');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tbl_images`
+-- Chỉ mục cho bảng `tbl_brands`
+--
+ALTER TABLE `tbl_brands`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tbl_images`
 --
 ALTER TABLE `tbl_images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_product` (`id_product`);
 
 --
--- Indexes for table `tbl_products`
+-- Chỉ mục cho bảng `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_brand` (`id_brand`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tbl_images`
+-- AUTO_INCREMENT cho bảng `tbl_brands`
+--
+ALTER TABLE `tbl_brands`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_images`
 --
 ALTER TABLE `tbl_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT for table `tbl_products`
+-- AUTO_INCREMENT cho bảng `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `tbl_images`
+-- Các ràng buộc cho bảng `tbl_images`
 --
 ALTER TABLE `tbl_images`
   ADD CONSTRAINT `tbl_images_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `tbl_products` (`id`);
+
+--
+-- Các ràng buộc cho bảng `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  ADD CONSTRAINT `tbl_products_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `tbl_brands` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -52,17 +52,20 @@ export default class InsertProduct extends Component {
         //         this.notify("upload thành công" + Math.round(progressEvent.loaded / progressEvent.total * 100) + "%");
         //     }
         // }
-        await axios.post('http://localhost:3100/products', data).then(response => {
-            if(response.data.status === true){
-                this.notify(response.data.message);
-            }
-        })
-        .catch(error => {
-            if($("."+error.response.data.details[0].context.key).find()){
-                $("."+error.response.data.details[0].context.key).append("<p class='msg-error'>"+error.response.data.details[0].message+"</p>");
-            }
-        });
-        // this.form.current.reset();
+        try {
+            await axios.post('http://localhost:3100/products', data).then(response => {
+                if(response.data.status === true){
+                    this.notify(response.data.message);
+                }
+                
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } catch (error) {
+            console.log("error", error);
+            
+        }
+        this.form.current.reset();
     }
     notify = (message) => {
         toast(message, {
