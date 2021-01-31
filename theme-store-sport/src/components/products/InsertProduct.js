@@ -37,9 +37,6 @@ export default class InsertProduct extends Component {
             image_product: files
         });
     }
-    // isChangeBrand = (event) => {
-    //     console.log(event.target.value);
-    // }
     onClickAddProduct = async (event) => {
         event.preventDefault();
         const data = new FormData();
@@ -48,17 +45,16 @@ export default class InsertProduct extends Component {
         data.append("sale_product", this.state.sale_product);
         data.append("quantity_product", this.state.quantity_product);
         data.append("description_product", this.state.description_product);
+        data.append("id_brand", this.state.id_brand);
         this.state.image_product.forEach((file) => data.append('image_product', file));
         // const progress = {
         //     onUploadProgress: progressEvent => {
         //         this.notify("upload thành công" + Math.round(progressEvent.loaded / progressEvent.total * 100) + "%");
         //     }
         // }
-        await axios.post('http://localhost:3100/products', data).then(response => { 
+        await axios.post('http://localhost:3100/products', data).then(response => {
             if(response.data.status === true){
                 this.notify(response.data.message);
-            }else{
-                this.notify("Thêm dữ liệu thất bại");
             }
         })
         .catch(error => {
@@ -66,7 +62,7 @@ export default class InsertProduct extends Component {
                 $("."+error.response.data.details[0].context.key).append("<p class='msg-error'>"+error.response.data.details[0].message+"</p>");
             }
         });
-        this.form.current.reset();
+        // this.form.current.reset();
     }
     notify = (message) => {
         toast(message, {

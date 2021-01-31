@@ -24,9 +24,10 @@ const getDetailProducts = (req, res, next) => {
     });
 }
 const insertProducts = (req, res, next) => {
-    const sql = "INSERT INTO tbl_products(name_product, price_product, sale_product, quantity_product, image_product, description_product) VALUES(?,?,?,?,?,?)";
+    const sql = "INSERT INTO tbl_products(id_brand, name_product, price_product, sale_product, quantity_product, image_product, description_product) VALUES(?,?,?,?,?,?,?)";
     const sql_images = "INSERT INTO tbl_images(id_product, image, url) VALUES(?,?,?)";
     const data = [ 
+        req.body.id_brand,
         req.body.name_product,
         req.body.price_product,
         req.body.sale_product,
@@ -36,7 +37,7 @@ const insertProducts = (req, res, next) => {
     ];
     db.query(sql, data, function (err, result) {
         if (err) throw err;
-        if(req.files.length > 1){
+        if(req.files.length > 0){
             req.files.forEach(element => {
                 const data_image = [
                     result.insertId,

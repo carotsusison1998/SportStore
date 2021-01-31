@@ -4,7 +4,6 @@ const validateParam = (schema, name) => {
     return (req, res, next) => {
         // console.log('params...', req.params[name])
         const validatorResult = schema.validate({ param: req.params[name] })
-        console.log('asdasda',validatorResult)
         if(validatorResult.error){
             return res.status(400).json(validatorResult.error)
         }
@@ -25,8 +24,6 @@ const validateParam = (schema, name) => {
 const validateBody = (schema) => {
     return (req, res, next) => {
         const validatorResult = schema.validate(req.body);
-        console.log('asdasda',validatorResult)
-
         if(validatorResult.error){
             return res.status(400).json(validatorResult.error);
         }
@@ -40,55 +37,14 @@ const validateBody = (schema) => {
 }
 
 const schemas = {
-    // idSchema: joi.object().keys({
-    //     param: joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
-    // }),
-
     productSchema: joi.object().keys({
+        id_brand: joi.string().required(),
         name_product: joi.string().required(),
         price_product: joi.string().required(),
         sale_product: joi.string().required(),
         quantity_product: joi.number().required(),
         description_product: joi.string().required(),
     }),
-
-    // signupSchema: joi.object().keys({
-    //     firstName: joi.string().required().min(2),
-    //     lastName: joi.string().required().min(2),
-    //     email: joi.string().email().required(),
-    //     password: joi.string().required().min(5)
-    // }),
-    
-    // signinSchema: joi.object().keys({
-    //     email: joi.string().email().required(),
-    //     password: joi.string().required().min(5)
-    // }),
-
-    // userOptionalSchema: joi.object().keys({
-    //     firstName: joi.string().min(2),
-    //     lastName: joi.string().min(2),
-    //     email: joi.string().email()
-    // }),
-
-    // deckSchema: joi.object().keys({
-    //     name: joi.string().min(5).required(),
-    //     description: joi.string().min(5).required(),
-    //     total: joi.string()
-    // }),
-    
-    // newdeckSchema: joi.object().keys({
-    //     name: joi.string().min(5).required(),
-    //     description: joi.string().min(5).required(),
-    //     total: joi.string(),
-    //     owner: joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
-    // }),
-
-    // deckOptionalSchema: joi.object().keys({
-    //     name: joi.string().min(5),
-    //     description: joi.string().min(5),
-    //     total: joi.string(),
-    //     owner: joi.string().regex(/^[0-9a-fA-F]{24}$/)
-    // }),
 }
 
 module.exports = {
