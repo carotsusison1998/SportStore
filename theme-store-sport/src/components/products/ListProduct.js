@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NumberFormat from 'react-number-format';
 const axios = require('axios').default;
-const limitText = require("../../libs/libs");
+const libs = require("../../libs/libs");
 
 export default class ListProduct extends Component {
     constructor(props){
@@ -26,7 +26,7 @@ export default class ListProduct extends Component {
                 return  <tr key={value.id}>
                             <td>{i++}</td>
                             <td><img src={"http://localhost:3100/"+value.image_product} /></td>
-                            <td>{limitText.limitText(value.name_product, 8)}</td>
+                            <td>{libs.limitText(value.name_product, 8)}</td>
                             <td><NumberFormat value={value.price_product} displayType={'text'} thousandSeparator={true} /></td>
                             <td><NumberFormat value={value.sale_product} displayType={'text'} thousandSeparator={true} /></td>
                             <td><NumberFormat value={value.quantity_product} displayType={'text'} thousandSeparator={true} /></td>

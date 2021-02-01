@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import $ from 'jquery';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+const {limitText, noticeMessage} = require('../../libs/libs');
 const axios = require('axios').default;
 
 export default class InsertProduct extends Component {
@@ -52,32 +50,23 @@ export default class InsertProduct extends Component {
         //         this.notify("upload thành công" + Math.round(progressEvent.loaded / progressEvent.total * 100) + "%");
         //     }
         // }
-        try {
-            await axios.post('http://localhost:3100/products', data).then(response => {
-                if(response.data.status === true){
-                    this.notify(response.data.message);
+        await axios.post('http://localhost:3100/products', data).then(response => {
+            if(response.data.status === true){
+                noticeMessage(response.data.message);
+                this.form.current.reset();
+            }
+        }).catch(function (error) {
+            if(error.response.status === 400){
+                if($("."+error.response.data.result.details[0].context.key).find()){
+                    if($(".msg-error").find()){
+                        $(".msg-error").remove();
+                    }
+                    $("."+error.response.data.result.details[0].context.key).append("<p class='msg-error'>"+error.response.data.result.details[0].message+"</p>");
                 }
-                
-            }).catch(function (error) {
-                console.log(error);
-            });
-        } catch (error) {
-            console.log("error", error);
-            
-        }
-        this.form.current.reset();
-    }
-    notify = (message) => {
-        toast(message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+            }
         });
     }
+    
     async componentDidMount() {
         await axios.get('http://localhost:3100/brands').then(response => { 
             this.setState({
@@ -99,7 +88,7 @@ export default class InsertProduct extends Component {
         return (
             <>
                 <form ref={this.form}>
-                    <div className="form-group name_product">
+                    <div className="form-group id_brand">
                         <label htmlFor="exampleInputEmail1">Tên sản phẩm</label>
                         <select onChange={(event) => this.isChange(event)} className="form-control" name="id_brand">
                             <option>Vui lòng chọn</option>

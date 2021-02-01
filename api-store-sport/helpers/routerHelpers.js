@@ -40,7 +40,7 @@ const validateBody = (schema) => {
 }
 
 const schemas = {
-    productSchema: joi.object().keys({
+        productSchema: joi.object().keys({
         id_brand: joi.string().required(),
         name_product: joi.string().required(),
         price_product: joi.string().required(),
