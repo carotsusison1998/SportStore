@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
 // const mongoose = require('mongoose');
 const securityApp = require('helmet');
 const connect_db = require('./database/connect');
@@ -12,6 +14,7 @@ app.use(cors());
 
 const brandRouter = require('./routes/brand');
 const productRouter = require('./routes/product');
+const userRouter = require('./routes/user');
 
 
 // Middlewares
@@ -24,7 +27,8 @@ app.use(bodyParser.urlencoded({
 
 // routes
 app.use('/brands', brandRouter);
-app.use('/products', productRouter)
+app.use('/products', productRouter);
+app.use('/users', userRouter);
 
 
 // routes
