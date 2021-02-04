@@ -6,6 +6,7 @@ const {validateParam, validateBody, schemas} = require('../helpers/routerHelpers
 // ALL
 router.route('/')
     .get(brandController.getAllBrands)
+    .post(brandController.insertBrands)
 
 
 

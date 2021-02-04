@@ -7,10 +7,12 @@ const userController = require('../controllers/user');
 // ALL
 router.route('/register')
     .post(userController.register)
-// router.route('/login')
-//     .post(userController.login)
-// router.route('/verify')
-//     .get(userController.verifyToken)
+router.route('/login')
+    .post(userController.login)
+router.route('/verify')
+    .get(userController.verifyToken)
+router.route('/logout')
+    .get(userController.logout)
 // // PARAM
 // router.route('/:ID')
 //     .get(productController.getDetailProducts)
