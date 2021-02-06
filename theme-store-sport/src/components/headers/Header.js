@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Link} from "react-router-dom";
 
 export default class Header extends Component {
     constructor(props){
@@ -15,6 +15,11 @@ export default class Header extends Component {
                 nameLogin: user.lastName
             })
         }
+    }
+    logout = (e) => {
+        localStorage.removeItem("token"); 
+        localStorage.removeItem("user");
+        window.location.href = "/login";
     }
     
     render() {
@@ -43,7 +48,7 @@ export default class Header extends Component {
                             <li className="dropdown">
                                 <a className="dropdown-toggle" data-toggle="dropdown" href="/">{this.state.nameLogin ? this.state.nameLogin : ""}<span className="caret" /></a>
                                 <ul className="dropdown-menu">
-                                    <li><Link to="/dashboard/list-brand">Logout</Link></li>
+                                    <li><button onClick={(e) => this.logout(e)}>Logout</button></li>
                                 </ul>
                             </li>
                         </ul>
