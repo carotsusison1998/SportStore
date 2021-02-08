@@ -13,8 +13,7 @@ export default class Header extends Component {
         const user = JSON.parse(localStorage.getItem('user'));
         if(user){
             this.setState({
-                nameLogin: user.lastName,
-                rule: user.rule
+                nameLogin: user.lastName
             })
         }
     }
@@ -23,9 +22,9 @@ export default class Header extends Component {
         localStorage.removeItem("user");
         window.location.href = "/login";
     }
-    showMenu = () => {
-        if(this.state.rule === 0){
-            return (
+    render() {
+        return (
+            <> 
                 <nav className="navbar navbar-inverse">
                     <div className="container-fluid">
                         <ul className="nav navbar-nav">
@@ -55,32 +54,6 @@ export default class Header extends Component {
                         </ul>
                     </div>
                 </nav>
-            )
-        }else{
-            return (
-                <nav className="navbar navbar-inverse">
-                    <div className="container-fluid">
-                        <ul className="nav navbar-nav">
-                            <li className="active"><Link to="/dashboard">Home</Link></li>
-                        </ul>
-                        <ul className="nav navbar-nav user">
-                            <li className="dropdown">
-                                <a className="dropdown-toggle" data-toggle="dropdown" href="/">{this.state.nameLogin ? this.state.nameLogin : ""}<span className="caret" /></a>
-                                <ul className="dropdown-menu">
-                                    <li><button onClick={(e) => this.logout(e)}>Logout</button></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            )
-        }
-    }
-    
-    render() {
-        return (
-            <> 
-                {this.showMenu()}
             </>
         )
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import InsertBrand from '../components/brands/InsertBrand';
-import ShowProduct from '../components/homes/ShowProduct';
+import DetailProduct from '../components/products/DetailProduct';
 import InsertProduct from '../components/products/InsertProduct';
 import ListProduct from '../components/products/ListProduct';
 import Login from '../components/users/Login';
@@ -9,10 +9,9 @@ import Login from '../components/users/Login';
 export default class RouterLink extends Component {
     render() {
         return (
-           
             <Switch>
                 <Route exact path="/dashboard">
-                    <ShowProduct />
+
                 </Route>
                 <Route path="/login">
                     <Login />
@@ -20,6 +19,7 @@ export default class RouterLink extends Component {
                 <Route path="/dashboard/insert-product">
                     <InsertProduct />
                 </Route>
+                <Route path="/dashboard/detail-product/:id" component={DetailProduct} />
                 <Route path="/dashboard/list-product">
                     <ListProduct />
                 </Route>

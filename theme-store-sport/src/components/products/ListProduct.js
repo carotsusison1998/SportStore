@@ -33,6 +33,7 @@ export default class ListProduct extends Component {
                             <td>
                                 <button className="btn btn-primary">Sửa</button>
                                 <button className="btn btn-danger">Xóa</button>
+                                <a href={"/dashboard/detail-product/" + value.id} className="btn btn-warning">Chi tiết</a>
                             </td>
                         </tr>
             })

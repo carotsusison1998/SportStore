@@ -15,6 +15,7 @@ app.use(cors());
 const brandRouter = require('./routes/brand');
 const productRouter = require('./routes/product');
 const userRouter = require('./routes/user');
+const imageRouter = require('./routes/image');
 
 
 // Middlewares
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use('/brands', brandRouter);
 app.use('/products', productRouter);
 app.use('/users', userRouter);
+app.use('/images', imageRouter);
 
 
 // routes
