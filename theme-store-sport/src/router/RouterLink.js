@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import InsertBrand from '../components/brands/InsertBrand';
+import ShowProduct from '../components/homes/ShowProduct';
 import InsertProduct from '../components/products/InsertProduct';
 import ListProduct from '../components/products/ListProduct';
 import Login from '../components/users/Login';
@@ -11,7 +12,7 @@ export default class RouterLink extends Component {
            
             <Switch>
                 <Route exact path="/dashboard">
-                    
+                    <ShowProduct />
                 </Route>
                 <Route path="/login">
                     <Login />

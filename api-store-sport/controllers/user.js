@@ -54,7 +54,8 @@ const login = (req, res) => {
                     user: {
                         email: result[0].email,
                         firstName: result[0].first_name,
-                        lastName: result[0].last_name
+                        lastName: result[0].last_name,
+                        rule: result[0].rule,
                     }
                 });
             }

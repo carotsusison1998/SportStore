@@ -41,13 +41,23 @@ const validateBody = (schema) => {
 
 const schemas = {
         productSchema: joi.object().keys({
-        id_brand: joi.string().required(),
-        name_product: joi.string().required(),
-        price_product: joi.string().required(),
-        sale_product: joi.string().required(),
-        quantity_product: joi.number().required(),
-        description_product: joi.string().required(),
-    }),
+            id_brand: joi.string().required(),
+            name_product: joi.string().required(),
+            price_product: joi.string().required(),
+            sale_product: joi.string().required(),
+            quantity_product: joi.number().required(),
+            description_product: joi.string().required(),
+        }),
+        userRegister: joi.object().keys({
+            first_name: joi.string().required(),
+            last_name: joi.string().required(),
+            email: joi.string().required().email(),
+            password: joi.string().required(),
+        }),
+        userLogin: joi.object().keys({
+            email: joi.string().required().email(),
+            password: joi.string().required(),
+        })
 }
 
 module.exports = {

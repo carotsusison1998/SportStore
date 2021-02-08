@@ -6,9 +6,9 @@ const userController = require('../controllers/user');
 
 // ALL
 router.route('/register')
-    .post(userController.register)
+    .post(validateBody(schemas.userRegister), userController.register)
 router.route('/login')
-    .post(userController.login)
+    .post(validateBody(schemas.userLogin), userController.login)
 router.route('/verify')
     .get(userController.verifyToken)
 router.route('/logout')

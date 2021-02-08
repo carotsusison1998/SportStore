@@ -10,3 +10,9 @@ img{
   position: absolute;
   right: 0;
 }
+.register-link{
+  cursor: pointer;
+}
+a:hover{
+  text-decoration: none;
+}

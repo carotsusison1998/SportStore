@@ -18,19 +18,21 @@ export default class App extends Component {
       if(localStorage.getItem("token")){
          return (
                   <Router>
-                     { window.location.pathname === '/login' ? null : <Header /> } 
+                     { window.location.pathname === '/login' ? null : <Header /> }
                      {
-                        localStorage.getItem("token") && window.location.pathname === '/login' ? window.location.href = "/dashboard" : null 
-                     }
-                     {
-                        localStorage.getItem("token") == null ? window.location.href = "/login" : null 
+                        window.location.pathname === '/login' ? window.location.href = "/dashboard" : null 
                      }
                      <RouterLink />
                      <ToastContainer />
                   </Router>
                )
       }else{
-         return (<Login />);
+         return (
+            <>
+               <Login />
+               <ToastContainer />
+            </>
+         );
       }
    }
    render() {
